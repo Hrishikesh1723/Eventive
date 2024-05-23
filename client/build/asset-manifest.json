@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.28234dcf.css",
+    "main.js": "/static/js/main.af36015f.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/E4.jpg": "/static/media/E4.1915bae442878439ba05.jpg",
+    "static/media/bg5.png": "/static/media/bg5.8c2b64233cc9904a30d2.png",
+    "static/media/usericon.jpg": "/static/media/usericon.749667cc5449de2b9786.jpg",
+    "static/media/about.png": "/static/media/about.a0aabcffc23e4f60cee1.png",
+    "static/media/about1.png": "/static/media/about1.11a2f27b1a195607b27a.png",
+    "static/media/Addadmin.png": "/static/media/Addadmin.fcee1e39286d5c9776a1.png",
+    "static/media/Mobile-login-Cristina-removebg-preview.png": "/static/media/Mobile-login-Cristina-removebg-preview.10add2a586d464858987.png",
+    "static/media/Addevent.png": "/static/media/Addevent.335479a42a7c43f2bec2.png",
+    "static/media/signup.png": "/static/media/signup.e33d8bc06b659253df26.png",
+    "static/media/Eventivelogo2.png": "/static/media/Eventivelogo2.7c63b8b0674a0d2f087e.png",
+    "static/media/EventiveLogo.png": "/static/media/EventiveLogo.f02a99ab16897ec1b346.png",
+    "static/media/background.png": "/static/media/background.e952ece5b7b4dede4d10.png",
+    "static/media/E9.jpg": "/static/media/E9.06fa64ffeb15e13a548f.jpg",
+    "index.html": "/index.html",
+    "main.28234dcf.css.map": "/static/css/main.28234dcf.css.map",
+    "main.af36015f.js.map": "/static/js/main.af36015f.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.28234dcf.css",
+    "static/js/main.af36015f.js"
+  ]
+}
