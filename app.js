@@ -26,7 +26,7 @@ cloudinary.config({
 });
 
 app.use(express.json());
-app.use(express.static(path.resolve(__dir, "../client/build")));
+app.use(express.static(path.resolve(__dir, "./client/build")));
 app.use(require('./router/auth'));
 app.use(require('./router/event'));
 app.use(require('./router/admin'));
@@ -35,7 +35,7 @@ app.use(require('./router/events3'));
 app.use(cookieParser());
 
 app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dir, "../client/build", "index.html"));
+    res.sendFile(path.resolve(__dir, "./client/build", "index.html"));
 });
 
 const PORT = process.env.PORT; 
