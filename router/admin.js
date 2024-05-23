@@ -4,7 +4,6 @@ const router3 = express.Router();
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
 const adminAuthenticate = require("../middleware/adminAuthantication");
-
 require("../db/connection");
 const Admin = require("../moduls/adminSchema");
 

@@ -1,7 +1,6 @@
 const express = require("express");
 const router2 = express.Router();
-
-require("../db/connection");
+require("./db/connection");
 const multer = require("multer");
 const { v4: uuidv4 } = require("uuid");
 const Event = require("../moduls/eventSchema");
