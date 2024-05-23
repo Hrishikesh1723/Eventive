@@ -43,8 +43,8 @@ function Aevents() {
       } else {
         console.log(res);
       }
+      callEventsData();
     }
-    window.location.reload(true);
   };
 
   useEffect(() => {
@@ -85,14 +85,11 @@ function Aevents() {
     <div className="containerE">
       <div className="eventImg">
         <div>
-          <img
-            src={
-              props.record.image !== undefined
-                ? `http://localhost:5000/images/${props.record.image}`
-                : { About1 }
-            }
-            className="eventImage"
-          />
+        {props.record.image !== undefined ? (
+          <img src={props.record.image} alt="event" className="eventImage" />
+        ) : (
+          <img src={About1} alt="event" className="eventImage" />
+        )}
         </div>
       </div>
       <div className="eventMain">

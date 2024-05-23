@@ -77,7 +77,7 @@ const Addevent = () => {
 
     const formData = new FormData();
     try {
-      formData.append("image", event.image, event.image.name);
+      formData.append("image", event.image);
       formData.append("title", event.title);
       formData.append("detail", event.detail);
       formData.append("date", event.date);
@@ -93,7 +93,7 @@ const Addevent = () => {
       } else {
         window.alert("Event added");
         console.log("Event added");
-        navigate("/addevent");
+        navigate("/aevents");
       }
     } catch (error) {
       window.alert("Incomplete Details!");
