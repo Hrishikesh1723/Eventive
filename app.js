@@ -1,52 +1,46 @@
-const express = require("express");
-const router2 = express.Router();
-require("./db/connection");
-const multer = require("multer");
-const { v4: uuidv4 } = require("uuid");
-const Event = require("../moduls/eventSchema");
-const DataParser = require("datauri/parser.js")
+
+
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+const express = require('express');
+const cookieParser = require('cookie-parser')
+const app = express();
+var cors = require('cors') 
+const path = require('path');
+const { fileURLToPath } = require('url');
 const cloudinary = require('cloudinary')
-const path = require("path")
 
-//stroge to image file in backend
-const storage = multer.memoryStorage();
+const __dir = path.dirname(__filename);
+console.log(__dir);
+app.use(cors()) 
 
-const parser = new DataParser();
+app.use('/images',express.static('images'));
 
-const formatImage = (file) => {
-  const fileExtension = path.extname(file.originalname).toString();
-  return parser.format(fileExtension, file.buffer).content;
-};
+dotenv.config({path:'./config.env'});
 
-let upload = multer({ storage });
-
-// Adding event
-router2.post("/addevent", upload.single("image"), async (req, res) => {
-  const { title, detail, date, time, venue } = req.body;
-  const file = formatImage(req.file);
-  const response = await cloudinary.v2.uploader.upload(file);
-  const image = response.secure_url;
-  const imageUrl = response.public_id;
-
-  if (!title || !detail || !date || !time || !venue) {
-    return res.status(422).json({ error: "Please enter full detail!" });
-  }
-
-  try {
-    const eventExist = await Event.findOne({ title: title });
-
-    if (eventExist) {
-      return res.status(422).json({ error: "Event title Already exist" });
-    } else {
-      const event = new Event({ title, detail, date, time, venue, image, imageUrl });
-
-      await event.save();
-
-      res.status(201).json({ message: "event added" });
-    }
-  } catch (err) {
-    console.log(err);
-  }
+require('./db/connection'); 
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY,
+    api_secret: process.env.CLOUD_API_SECRET,
 });
 
-module.exports = router2;
+app.use(express.json());
+app.use(express.static(path.resolve(__dir, "../client/build")));
+app.use(require('./router/auth'));
+app.use(require('./router/event'));
+app.use(require('./router/admin'));
+app.use(require('./router/email')); 
+app.use(require('./router/events3'));
+app.use(cookieParser());
+
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dir, "../client/build", "index.html"));
+});
+
+const PORT = process.env.PORT; 
+
+
+app.listen(PORT, ()=>{
+    console.log(`server is runging on port no. ${PORT}`)
+}); 
